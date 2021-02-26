@@ -162,3 +162,523 @@ Task:
 		}
 		return result;
 	}
+
+class University
+{
+	String name;				//name of the university
+	List<College> collegeList;	
+}
+
+class College
+{
+	String name;
+	Integer numberOfDepts;
+//	String universityName;		//name of the University
+	University university;		//this?????>?>> are you able to understand???????
+}
+
+	
+Aggregation or Composition
+
+An object has another object
+or
+An object is a part of another object
+
+A car has engine
+A car has audio system
+
+A has B
+
+A and B can exist independently. And can has association
+That is aggregation
+
+A has B
+	but B cannot exist alone
+THat is composition
+
+
+public static List<Contact> prefill()throws ParseException{
+List<Contact> contactList = new ArrayList<>();
+SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+contactList.add(new Contact("John","9876543210","john@gmail.com",sdf.parse("31/01/1990")));
+contactList.add(new Contact("Grace","9898798652","grace@gmail.com",sdf.parse("27/02/1987")));
+contactList.add(new Contact("Wayne","9787621230","wayne@gmail.com",sdf.parse("15/09/1988")));
+contactList.add(new Contact("Joe","9879865898","joe@gmail.com",sdf.parse("23/07/1992")));
+contactList.add(new Contact("David","9856985620","david@gmail.com",sdf.parse("24/05/1982")));
+contactList.add(new Contact("Jane","9765659820","jane@gmail.com",sdf.parse("13/03/1993")));
+contactList.add(new Contact("Choe","9595878580","choe@gmail.com",sdf.parse("26/09/1989")));
+contactList.add(new Contact("Chris","9659659790","chris@gmail.com",sdf.parse("15/03/1993")));
+return contactList;
+}
+
+
+
+we use prefill method only in main method
+and we call this prefill method only once in main method
+after that
+we got the List<Contact> 
+this list only is used
+
+
+
+Person rama;
+rama=new Student();			//Student extends Person
+
+rama instanceof Student			//true
+rama instanceof Person			//true
+
+Abstract class and Interface
+
+StringBuilder
+StringBuffer
+
+	allows editing a portion of a String
+
+8 primitive data types. And each primitive has a corresponding Wrapper class
+Integer
+Byte
+Short
+Long
+Double
+Boolean
+Char
+Float
+
+
+---------Let us continue from Enumeration types
+Monday
+Tuesday
+Wednesday
+.....
+
+This is an example for enumeration
+
+Enumeration is like a Type	
+
+enum Days
+{
+	MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+}
+
+public class EnumerationDemo {
+
+	public static void main(String[] args) {
+		Days today=Days.FRIDAY;
+//		today=Days.FEBRUARY;			Not allowed. Only those 7 values are allowed
+		System.out.println(today);
+	}
+
+}
+
+
+
+Inner class
+----------------------
+
+class Car
+{
+	String name="Swift";
+	String color;
+	Engine engine=new Engine();
+	
+	class Engine
+	{
+		//this is inner class
+		String neuralSchema="secret";
+		public void start()
+		{
+			System.out.println(name+"......Grrrrrr.....");
+		}
+	}
+	
+	public void run() {
+		System.out.println("Car is running in "+engine.neuralSchema);
+	}
+}
+
+enum Days
+{
+	MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
+};
+
+public class EnumerationDemo {
+
+	public static void main(String[] args) {
+		Days today=Days.FRIDAY;
+//		today=Days.FEBRUARY;			Not allowed. Only those 7 values are allowed
+		System.out.println(today);
+		
+		Car swift=new Car();
+		swift.engine.start();
+		swift.run();
+	}
+
+}
+
+
+in css,
+display : 200;		//will you agree???		block	or	inline	or	flex	
+you will not agree anything other than the allowed values.
+THat is what we call it as enum in java
+
+Anonymous classes
+	We used anonymous class when we wanted to implement an interface just like that (ad hoc)
+
+
+
+interface Person
+{
+	public void speak();
+	public void listen();
+}
+
+public class AnonymousDemo {
+
+	public static void main(String[] args) {
+		Person rama=new Person() {
+			
+			@Override
+			public void speak() {
+				System.out.println("Person speaks");
+				
+			}
+			
+			@Override
+			public void listen() {
+				System.out.println("Person listens");
+				
+			}
+		};
+		rama.speak();
+		rama.listen();
+	}
+
+}
+
+-----------------------------------
+Anonymous function
+		List<Integer> marks=new ArrayList<Integer>();
+		marks.add(12);
+		marks.add(2);
+		marks.add(22);
+		marks.add(122);
+		marks.add(212);
+		marks.add(112);
+		marks.add(152);
+		marks.add(125);
+		marks.add(512);
+		marks.add(132);
+		Collections.sort(marks,(a,b)->b.compareTo(a));
+		for(Integer x:marks)
+			System.out.println(x);
+
+---------------------------
+String formating
+System.out.printf("%-10s %s\n","Month", "Count"); 
+System.out.format("%-10s %s\n","Month", "Count"); 
+
+these 2 will display the output in the given format
+But
+String str=String.format("%-10s %s\n","Month", "Count"); 
+	will not display. But it will return the formatted string. This is very useful when we create BO methods that should return the result rather than displaying it.
+
+-------------------------------------
+StringJoiner
+
+StringJoiner sj=new StringJoiner(",");
+		sj.add("India");
+		sj.add("Australia");
+		sj.add("Pakistan");
+		sj.add("Sri lanka");
+		sj.add("Canada");
+		sj.add("Japan");
+		sj.add("China");
+		sj.add("Bangladesh");
+		System.out.println(sj);
+----------------
+in java
+	0 is prefixed to imply an octal number
+	0x is prefixed to imply a hexa decimal number
+
+		int x=010;
+		System.out.println(x);	//8
+
+		int x=0X10;
+		System.out.println(x);	//16
+
+
+System.out.format("%o ... %x",8,16);		//		10 ... 10
+
+
+-------------------
+Annotation
+	what is meant by annotation?
+		it means comment
+	How does annotations differ from comments in java?
+		//this is a single line comment
+		/*this is a multi
+			line comment*/
+
+	The above comments are ignored by the compiler.
+	But annotations are not ignored by the compiler. 
+			Runtime annotations are present in the compiled code itself.
+	The annotations can be read by other programs to understand the role or purpose of a
+
+ code
+
+	@Override	is an example for annotation. But this annotation is a compiler level annotation, and hence it is not available in compiled code. Only for the compiler checking purpose, it is used.
+
+	@Deprecated	is also an example for annotation. It means, that this item is out of fashion. Or discontinued. Or old style.
+
+	We are going to learn to create our own annotations.
+	and we will specify the Retention policy for that annotation
+
+	
+We are going to create Annotations now
+--------------------------------------
+we created classes
+we created interfaces
+we created enums
+we are now creating annotation
+
+	public @interface encouraged
+	{
+		
+	}
+
+An annotation can be targeted on 
+	class
+	method
+	constructor
+	interface
+	getters
+	setters
+	fields
+	
+
+Annotations can also take parameters
+	public @interface encouraged
+	{
+		String message();	
+	}
+
+we are going to write a program that reads annotation
+
+
+Annotations form metadata
+	
+Reflection means, reading meta data
+we are going to do reflection in java
+through reflection, we can find out how many methods are there in a class.	
+
+
+Rentention values:
+	SOURCE			The annotations are available in source code only.Compiler uses this annotation give error. But after compilation, these annotations are removed
+	RUNTIME			The annotations are avaialble at runtime
+
+
+
+
+Task 1:
+-----
+A date is a magic date if the sum of all the digits becomes 1. This happens when we repeatedly add the digits until it becomes a single digit number.
+Ex:
+	02-02-2004 is a magic number because,
+
+	2+2+2+4=10
+	since 10 is more than a 2 digit number,	repeat the same:
+	1+0=1
+
+	since the single digit obtained is 1, 
+	02-02-2004 is a magic number
+
+02-02-2004
+12-12-2002
+04-01-2003
+04-01-2012
+04-01-2004
+20-08-1998
+
+
+import java.util.Scanner;
+
+public class IncrementalSequence {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String str=sc.next();
+		int index=0;
+		char[] carr = str.toCharArray();
+		int previous=carr[0]-48;
+		int violation=0;
+		boolean isValid=true;
+		int digitSum=previous;
+		for(int i=1;i<carr.length;i++)
+		{
+			int current=carr[i]-48;
+//			System.out.println("Comparing "+previous+" with "+current);
+			if(previous>current)
+			{
+				violation=previous;
+				isValid=false;
+			}
+			digitSum+=current;
+			previous=current;
+		}
+		
+		if(!isValid) {
+			System.out.println("False");
+			System.out.println(violation);
+		}else
+		{
+			System.out.println("True");
+			System.out.println(digitSum);
+		}
+
+	}
+
+}
+==================================================================
+Exception Handling:
+-------------------
+	What do you think is exception???
+		Exception interrupts the flow of execution of the program
+
+	when we do not know how to react, we raise exception
+
+	divide by zero is an example of exception
+		because we dont know what is the result of divide by zero
+
+	Exception is an object created in such situation
+		That means Exception is a class
+
+	Some behavior of exception:
+		the program terminates abruptly
+		the program do not continue
+		
+	we are not discussing about syntax error.	
+	we are not discussing about logical error.
+
+	we are discussing runtime exceptions
+
+	All exception messages we see, all errors we see are defined. already defined.
+
+			Object
+			
+			Throwable
+	
+		Error		Exception		(these 2 classes are derived from Throwable)
+
+	Among these 2, Error(s) cannot be handled
+	Exceptions can be handled
+
+	Lets see why Exceptions are raised...
+
+
+	throw an object of any class that is derived from "Exception" or "RuntimeException" or any of their sub classes
+	A class that extends Exception
+		is an exception class. That means its object can be thrown
+	Not all classes are throwable. Only classes derived from Throwable are throwable.
+
+DivideByZeroException
+	denominator is 0
+		universally this is wrong. But if Sun microsystems knows how to react in this situation, they would not have thrown exception
+		They know that denominator 0 is wrong, but how to proceed, is not their decision. So they throw exception. allowing us to handle the exception
+
+HTML front end		servlet		DAO (jdbc)	Oracle Stored Procedure (PLSQL)		database 
+Form submit	
+
+
+a class Extending Exception is checked by the compiler
+So classes that extend Exception class are called as "Checked Exception"s
+
+a class that exend RuntimeException are not checked by complier. So we will not use "throws" in that case
+They are called as "Unchecked Exception"s
+
+
+ArithmeticException	(unchecked)
+NumberFormatException	(unchecked)
+ArrayIndexOutOfBoundsException	(unchecked)
+
+
+IOException		(checked)
+
+
+
+
+
+to handle exceptions,
+we use try catch finally blocks
+
+
+try block
+	keep the block very minimum lines of code
+	if you keep so many lines of code inside try block, it will disrupt your execution flow
+	when exception occurs in a line, it will jump to catch block. so if there are many lines below, then they are not executed
+
+
+try
+{
+}
+catch
+catch
+catch
+finally
+
+
+try
+finally
+
+try
+catch
+
+
+try
+catch
+finally
+
+try
+catch
+catch
+catch
+catch
+finally
+
+	
+finally block is executed whenever try block is executed.
+even if exception occured or not
+even if exception is handled or not
+
+Activity 1:
+-----------
+	Identify the difference between 
+		checked exception 
+		unchecked exception
+
+	Identify atleast 5 exception classes in both category
+
+	Identify the difference between
+		throw
+		throws
+
+	Identify the use of
+		try
+		catch
+		finally
+
+	Identify how to create user defined exception classes (checked, unchecked)
+
+	Identify what are assertions
+		How to enable and how to disable
+
+
+	
+
+FOr creating object of a class another technique is there:
+
+	Class.forName("Student");		//this will create an object of Student.
+
+	at compile time, it will not check if Student class is available or not
+
+	ClassNotFoundException
+		Class.forName("Student");
