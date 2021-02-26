@@ -1,0 +1,164 @@
+Collections
+-----------
+List	(ordered (remembers the order in which the elements where added)	(allows duplicates)
+	ArrayList	has index		get(index)
+	LinkedList
+Set	(order is based on algorithm)	(rejects duplicates)
+	HashSet			order is based on hashcode
+	TreeSet			sorted	based on comparator /comparable
+	LinkedHashSet		order in which elements are added
+Map	(key-value pair)	2 dimensions
+	HashMap
+	TreeMap
+	LinkedHashMap
+
+What is a map.
+	we want to store elements along with their key identifier	(like a primary key)
+	key is a unique identifier means, Key is a Set	(HashSet??? or TreeSet????? or LinkedHashSet?????)
+
+	HashMap		
+		key is a HashSet
+
+	TreeMap
+		key is a TreeSet
+	
+	LinkedHashMap
+		key is a LinkedHashSet
+
+Lets see an example for HashMap
+
+	Let us store the country code as key. Country name as value
+
+	INR	India
+	USD	United States of America
+	AED 	United Arab Emirates Dirham
+	AFN	Afghanistan Afghani
+	ALL	Albania Lek
+	AMD	Armenia Dram
+
+1) iMPORT
+2) Create a project exactly same name in same location
+
+
+
+		HashMap<String, String> cc=new HashMap<>();
+		//there is no add method in map
+		//use put and get
+		cc.put("INR","India");
+		cc.put("USD","United States of America");
+		cc.put("AED","United Arab Emirates Dirham");
+		cc.put("AFN","Afghanistan Afghani");
+		cc.put("ALL","Albania Lek");
+		cc.put("AMD","Armenia Dram");
+		System.out.println(cc);
+
+
+To add an entry into the Map, use "put" method				put(key, value)
+To retrieve the value based on a key, use "get" method			value=get(key);
+
+HashMap
+	maintains the key as a HashSet. 
+	Since key is a set, it does not allow duplicates. 
+	Map slightly differes the way it reacts to duplicates.
+
+
+whenever we add duplicate key in a map, the value will be updated with the new entry
+
+
+imagine how the receipt is stored???
+every receipt has bill number
+billno	billdate	itemnumber	
+1	today		1231
+1	today		2231
+
+
+billno,	Order(....)
+
+HashSet<Employee>
+	
+
+HashMap<Integer, Employee>
+
+HashMap<Receipt, Order>
+
+composite key
+	for key, they create an user defined class
+	class Receipt
+		billno
+		itemno
+
+-----------------------------
+How to display All the entries in a HashMap
+	System.out.println(x);
+There is no iterator for a Map	
+	i) i can get all the keys as a Set. Set has itertor
+	ii) for each loop
+
+
+to get all the keys as a Set			keySet
+to get all the entries as a Set			entrySet
+
+
+//how to display Map???
+		//i) get the keys as a set
+		Set<String> keys = cc.keySet();	
+		for(String key:keys)
+			System.out.println(key+"\t:\t"+cc.get(key));
+		
+		//ii) using for each loop. Look the map is a Set of entries
+		for(Entry<String, String> entry:cc.entrySet())
+		{
+			System.out.println(entry.getKey()+"\t:\t"+entry.getValue());
+		}
+
+
+TreeMap
+	always maintains the keys in sorted manner. Sorted means, predefined types already implements Comparable.
+	If KEY is user defined, then comparable/comparator is required
+
+LinkedHashMap
+	maintains the keys in the order in which they are added
+
+In any Map,
+	when we use "put" method, it may add or it may update
+	i) if key is not found, it is added
+	ii) if key is found, its value is replaced by the new value
+
+Task:
+	Write a program to accept a string input from the user.
+	ex:	
+	input:	India is our country. There are many states in India. There are many languages.
+	
+	output:
+	a	8
+	c	1
+	d	2
+	
+	Display the alphabets and their number of occurrance. If an alphabet is not found in the input, NO NEED TO DISPLAY 0
+	Display not only the alphabets, but SPACE, DOT, COMMA AND ANY SYMBOLS FOUND IN THE INPUT STRING
+
+	Hint:
+		map.get(key);			//if key is not found, it will return null
+
+	if i am getting null, the value to be added is 1
+	if i am not getting null, already some value is there, increment it and again put the same, replace
+
+
+
+
+	public static Map<Integer, Integer> yearWiseCount(List<Mobile> mobileList)
+	{
+		Map<Integer, Integer> result=new TreeMap<>();
+		for(Mobile mobile:mobileList)
+		{
+			Date launchDate = mobile.getLaunchedDate();
+			//extract year from launchDate
+			Integer year=launchDate.getYear()+1900;
+			Integer count=result.get(year);
+			if(count==null)
+				count=0;
+			count++;
+			result.put(year, count);
+		}
+		return result;
+	}
